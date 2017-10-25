@@ -1,3 +1,4 @@
+#fhgghv
 import pygame
 import time
 import random
@@ -255,62 +256,4 @@ def gamem():
 					gameOver = True		
 				elif event.key == pygame.K_LEFT: 	
 					lead_x_change = -5
-				elif event.key == pygame.K_RIGHT:	
-					lead_x_change = 5
-				elif event.key == pygame.K_SPACE:
-					player.flip()
-	        	        	points_sound = pygame.mixer.Sound("beep.wav")
-        	        	    	points_sound.play()
-					img = pygame.transform.rotate(img,180)
-							
-			elif event.type == pygame.KEYUP:
-				if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
-					lead_x_change = 0
-					
-		if lead_x_change >= 0:
-	        	player.x += lead_x_change/4 - lead_x_change/5
-			time -= 0.05
-    		else:
-        		player.x += -lead_x_change/4 + lead_x_change/5
-					
-                count += lead_x_change/5
-		gameDisplay.fill(white)
-
-		if (score - 5 >= 0 and score + 5 <= 15):
-			background = pygame.image.load("Assets/Images/background.bmp")
-		else:
-			background = pygame.image.load("Assets/Images/background.bmp")
-		gameDisplay.blit(background, (0,0))
-		gameOver,img = player.update(brickList,gameOver,img)
-		if (gameOver or int(time) <= 0):
-			lives -= 1
-			pre_game_start()
-		player.render(gameDisplay,img)		
-        	if (int(count)%50==0):
-            		score+=1	
-		for brick in brickList:
-			brick.x -= lead_x_change
-			if (brick.ID == 'q' and detectCollisions(player.x,player.y,player.width,player.height,brick.x,brick.y,32,32)):
-				brickList.remove(brick)
-				sp_itms += 1
-				player.flip()
-			brick.render(gameDisplay)
-		pygame.draw.rect(gameDisplay, black, (0,0,800,32))
-		game.display_score("Score   "+str(score),0,0)
-		game.display_score("Items  "+str(sp_itms),250,0)
-		game.display_score("Lives   "+str(lives),690,0)	
-		game.display_score("Time   "+str(int(time)),420,0)
-		if lives == 0:
-			gameDisplay.fill(black)
-			GameOver()
-		if (player.x >= 92*32):
-			gameDisplay.fill(black)
-			game.display_score("Congratulations! You completed the level!",350,320)
-		pygame.display.update()			
-		clock.tick(fps)
-
-if __name__ == "__main__":
-	game_intr()
-	pygame.quit()
-	quit()					
-
+				
